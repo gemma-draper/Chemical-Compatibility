@@ -20,3 +20,5 @@ Equipment we wish to consider includes:
 - Pressure generators
 
 In 2019, the ISIS Sample Environment Group created a simple spreadsheet to summarise the available literature for compatibility of the materials with various chemicals at room temperature. You can see a snapshot of this spreadsheet below.
+
+![A snapshot of the chemical compatibility spreadsheet.](https://user-images.githubusercontent.com/84348138/135100089-1d33d611-8503-48ec-af92-4b08f8071123.png)
