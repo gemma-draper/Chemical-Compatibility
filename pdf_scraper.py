@@ -35,19 +35,58 @@ for item in pd.concat([
 print(f"Key: {key_dict}")
 
 # split the top row into col names and value
-columns = ["Chemical"]
-df0 = tables[0].df.iloc[12:]
-for idx in range(1, len(df0.iloc[0])):
-    columns.append(re.split('\n', df0.iloc[0][idx])[0])
-    df0.iloc[0][idx] = re.split('\n', df0.iloc[0][idx])[1]
+def split_col_name_and_value(df):
+    """
+    Input: dataframe where top row values are in the form "Column_name\nValue".
 
-#%%
-# create dictionary for renaming df cols
-num_list = list(range(0, len(columns)))
-col_dict = dict(zip(num_list, columns))
+    Output: dataframe with clean top row values and column names.
+    """
 
-# rename and reindex
-df0.rename(columns=col_dict, inplace=True)
-df0.index = np.arange(1, len(df0)+1)
+    columns = ["Chemical"]
+    
+    # split top row values
+    for idx in range(1, len(df.iloc[0])):
+        columns.append(re.split('\n', df.iloc[0][idx])[0])
+        df.iloc[0][idx] = re.split('\n', df.iloc[0][idx])[1]
+    
+    # create dictionary for renaming df cols
+    num_list = list(range(0, len(columns)))
+    col_dict = dict(zip(num_list, columns))
 
+    # rename and reindex
+    df.rename(columns=col_dict, inplace=True)
+    df.index = np.arange(1, len(df)+1)
+
+    return df
+
+    
+df0 = split_col_name_and_value(tables[0].df.iloc[12:])
+
+
+full_df = df0
+for i in range(1, 5):
+
+    df = split_col_name_and_value(tables[i].df)
+    full_df = pd.concat([full_df, df], ignore_index=True)
+
+full_df    
 # %%
+# make tables!
+
+chemical_name_table = pd.DataFrame()
+chemical_formula_table = pd.DataFrame()
+chemical_hazard_table = pd.DataFrame()
+
+material_name_table = pd.DataFrame()
+source_table = pd.DataFrame()
+
+# for chemical
+#   chemspider search
+#   get formula from first item
+#   check if in formula table
+#       add to table, generating new ID
+#       or 
+
+
+
+
