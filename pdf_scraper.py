@@ -4,7 +4,7 @@ import numpy as np
 import camelot
 import re
 
-# read the tables from pdf
+# read the tables from Geotech.pdf
 tables = camelot.read_pdf(
     'resources\pdfs\Geotech.pdf', 
     pages='all',
@@ -69,24 +69,8 @@ for i in range(1, 5):
     df = split_col_name_and_value(tables[i].df)
     full_df = pd.concat([full_df, df], ignore_index=True)
 
+#show the data frame
 full_df    
 # %%
-# make tables!
-
-chemical_name_table = pd.DataFrame()
-chemical_formula_table = pd.DataFrame()
-chemical_hazard_table = pd.DataFrame()
-
-material_name_table = pd.DataFrame()
-source_table = pd.DataFrame()
-
-# for chemical
-#   chemspider search
-#   get formula from first item
-#   check if in formula table
-#       add to table, generating new ID
-#       or 
-
-
 
 
