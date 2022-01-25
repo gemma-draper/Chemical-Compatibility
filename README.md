@@ -31,4 +31,4 @@ Alongside ensuring the safety of experiments, covered above, cost reduction and 
 - Migrate data to a SQL database.
 - Expand to include temperature data.
 - Deploy API.
-- Interactive browser-based search function.
+- Browser-based search function.
